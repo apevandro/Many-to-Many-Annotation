@@ -1,0 +1,69 @@
+# Best practice
+
+create table COURSES (
+       CourseId integer not null,
+       Name varchar(255),
+       TotalCredits integer,
+       primary key (CourseId));
+
+create table DISCIPLINES (
+       DiscId integer not null,
+       Name varchar(255),
+       Credits integer,
+       primary key (DiscId));
+
+create table DISCIPLINE_COURSE (
+       Id integer not null,
+       Duration integer,
+       Title varchar(255),
+       CourseId integer,
+       DiscId integer,
+       primary key (Id),
+       foreign key (CourseId) references COURSES (CourseId),
+       foreign key (DiscId) references DISCIPLINES (DiscId));
+
+--------------------------------------------------------------
+# Intermediate entity strategy
+
+create table COURSES (
+       CourseId integer not null,
+       Name varchar(255),
+       TotalCredits integer,
+       primary key (CourseId));
+
+create table DISCIPLINES (
+       DiscId integer not null,
+       Name varchar(255),
+       Credits integer,
+       primary key (DiscId));
+
+create table DISCIPLINE_COURSE (
+       Time integer not null,
+       CourseId integer not null,
+       DiscId integer not null,
+       Title varchar(255),
+       primary key (Time, CourseId, DiscId),
+       foreign key (CourseId) references COURSES (CourseId),
+       foreign key (DiscId) references DISCIPLINES (DiscId));
+
+--------------------------------------------------------------
+# Join table strategy
+
+create table COURSES (
+       CourseId integer not null,
+       Name varchar(255),
+       TotalCredits integer,
+       primary key (CourseId));
+
+create table DISCIPLINES (
+       DiscId integer not null,
+       Name varchar(255),
+       Credits integer,
+       primary key (DiscId));
+
+create table DISC_COURSE (
+       CourseId integer not null,
+       DiscId integer not null,
+       primary key (CourseId, DiscId),
+       foreign key (CourseId) references COURSES (CourseId),
+       foreign key (DiscId) references DISCIPLINES (DiscId));

@@ -1,0 +1,88 @@
+# Best practice
+
+INSERT INTO DISCIPLINES (DiscId, Name, Credits)
+VALUES (1, 'Software Engineering', 30);
+
+INSERT INTO DISCIPLINES (DiscId, Name, Credits)
+VALUES (2, 'Database', 30);
+
+INSERT INTO DISCIPLINES (DiscId, Name, Credits)
+VALUES (3, 'Calculus', 30);
+
+INSERT INTO COURSES (CourseId, Name, TotalCredits)
+VALUES (2142, 'Computer Science', 1500);
+
+INSERT INTO COURSES (CourseId, Name, TotalCredits)
+VALUES (2143, 'Computer Engineering', 1500);
+
+INSERT INTO DISCIPLINE_COURSE (Id, Duration, Title, CourseId, DiscId)
+VALUES (1, 10, 'Bacharel', 2142, 1);
+
+INSERT INTO DISCIPLINE_COURSE (Id, Duration, Title, CourseId, DiscId)
+VALUES (2, 10, 'Bacharel', 2142, 2);
+
+INSERT INTO DISCIPLINE_COURSE (Id, Duration, Title, CourseId, DiscId)
+VALUES (3, 20, 'Master', 2143, 2);
+
+INSERT INTO DISCIPLINE_COURSE (Id, Duration, Title, CourseId, DiscId)
+VALUES (4, 20, 'Master', 2143, 3);
+
+--------------------------------------------------------------
+# Intermediate entity strategy
+
+INSERT INTO DISCIPLINES (DiscId, Name, Credits)
+VALUES (1, 'Software Engineering', 30);
+
+INSERT INTO DISCIPLINES (DiscId, Name, Credits)
+VALUES (2, 'Database', 30);
+
+INSERT INTO DISCIPLINES (DiscId, Name, Credits)
+VALUES (3, 'Calculus', 30);
+
+INSERT INTO COURSES (CourseId, Name, TotalCredits)
+VALUES (2142, 'Computer Science', 1500);
+
+INSERT INTO COURSES (CourseId, Name, TotalCredits)
+VALUES (2143, 'Computer Engineering', 1500);
+
+INSERT INTO DISCIPLINE_COURSE (Time, Title, CourseId, DiscId)
+VALUES (10, 'Bacharel', 2142, 1);
+
+INSERT INTO DISCIPLINE_COURSE (Time, Title, CourseId, DiscId)
+VALUES (10, 'Bacharel', 2142, 2);
+
+INSERT INTO DISCIPLINE_COURSE (Time, Title, CourseId, DiscId)
+VALUES (20, 'Master', 2143, 2);
+
+INSERT INTO DISCIPLINE_COURSE (Time, Title, CourseId, DiscId)
+VALUES (20, 'Master', 2143, 3);
+
+--------------------------------------------------------------
+# Join table strategy
+
+INSERT INTO DISCIPLINES (DiscId, Name, Credits)
+VALUES (1, 'Software Engineering', 30);
+
+INSERT INTO DISCIPLINES (DiscId, Name, Credits)
+VALUES (2, 'Database', 30);
+
+INSERT INTO DISCIPLINES (DiscId, Name, Credits)
+VALUES (3, 'Calculus', 30);
+
+INSERT INTO COURSES (CourseId, Name, TotalCredits)
+VALUES (2142, 'Computer Science', 1500);
+
+INSERT INTO COURSES (CourseId, Name, TotalCredits)
+VALUES (2143, 'Computer Engineering', 1500);
+
+INSERT INTO DISC_COURSE (CourseId, DiscId)
+VALUES (2142, 1);
+
+INSERT INTO DISC_COURSE (CourseId, DiscId)
+VALUES (2142, 2);
+
+INSERT INTO DISC_COURSE (CourseId, DiscId)
+VALUES (2143, 2);
+
+INSERT INTO DISC_COURSE (CourseId, DiscId)
+VALUES (2143, 3);
